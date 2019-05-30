@@ -23,9 +23,7 @@ var mongoStore = connectMongo(session);
 
 module.exports = function(app) {
   var env = app.get('env');
-
   app.set('views', config.root + '/server/views');
-  app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
   //app.use(require('express-domain-middleware'));
   app.use(compression());
@@ -76,7 +74,7 @@ module.exports = function(app) {
     app.use(excludeLuscaForSkype());
   }
 
-  app.set('appPath', path.join(config.root, 'client'));
+  app.set('appPath', path.join(config.root, 'dist', 'client'));
 
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));

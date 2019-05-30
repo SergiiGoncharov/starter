@@ -16,7 +16,7 @@ var all = {
   env: process.env.NODE_ENV,
 
   // Root path of server
-  root: path.normalize(__dirname + '/../../..'),
+  root: path.resolve(__dirname + '/../../..'),
 
   // Server port
   port: process.env.PORT || 9000,
@@ -28,7 +28,7 @@ var all = {
   seedDB: false,
 
   // upload dir
-  uploadDir: path.normalize(__dirname + '/../../..' + '/uploads'),
+  uploadDir: path.resolve(__dirname + '/../../..' + '/uploads'),
 
   // Secret for session, you will want to change this and make it an environment variable
   secrets: {
@@ -67,6 +67,7 @@ var all = {
 
 // Export the config object based on the NODE_ENV
 // ==============================================
+
 module.exports = _.merge(
   all,
   require('./shared'),

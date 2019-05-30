@@ -1,5 +1,4 @@
-import googleapis from 'googleapis';
-import fs from 'fs';
+const googleapis = require("googleapis");
 import config from '../../config/environment';
 import Bluebird from 'bluebird';
 import Position from '../../api/candidate/position.model';
@@ -10,7 +9,7 @@ class GCalendar extends EventEmitter {
 
   constructor() {
     super();
-    this.credentials = JSON.parse(fs.readFileSync(config.calendar.keyFile));
+    this.credentials = config.credentials;
     this.oauth2Client = new googleapis.auth.OAuth2();
     this.eventsApi = Bluebird.promisifyAll(googleapis.calendar('v3').events);
   }
